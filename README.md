@@ -4,11 +4,13 @@
 
 Visualization helps end-users understand data. **Vue Charts.css** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
 
+[Get Started | Learn more | Docs](https://vue-charts-css.github.io/docs/get-started/)
+
 ![Version](https://badgen.net/npm/v/vue.charts.css) ![Size](https://badgen.net/badgesize/normal/Vue-Charts-CSS/vue.charts.css/main/dist/vue-charts-css.min.js) ![Size GZIP](https://badgen.net/badgesize/gzip/Vue-Charts-CSS/vue.charts.css/main/dist/vue-charts-css.min.js) ![Size Brotli](https://badgen.net/badgesize/brotli/Vue-Charts-CSS/vue.charts.css/main/dist/vue-charts-css.min.js)
 
-## Installation
+## Install
 
-Find full [Installation guide for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/get-started/installation).
+[View Install Guide](https://vue-charts-css.github.io/docs/get-started/installation).
 
 _This is still alpha, please do not use in production. Any issues are still however welcome as this is built out. For more information, [please read the roadmap](https://vue-charts-css.github.io/docs/development/roadmap/)._
 
@@ -26,7 +28,7 @@ npm install vue.charts.css
 
 ## Documentation
 
-Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/).
+[Read Guides & Documentation](https://vue-charts-css.github.io/docs/).
 
 ```vue
 <charts-css
