@@ -28,7 +28,7 @@ npm install vue.charts.css
 
 Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/).
 
-```
+```vue
 <charts-css
     heading="Team's Coffee Count"
     type="bar"
@@ -37,7 +37,7 @@ Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.
 />
 ```
 
-```
+```vue
 <script>
     export default {
         data()
