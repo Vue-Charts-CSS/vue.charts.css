@@ -4,7 +4,7 @@
 
 Visualization helps end-users understand data. **Vue Charts.css** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
 
-_This is still Alptha, please do not use in production. Any issues are still however welcome as this is built out. For more information, [please read the roadmap](https://vue-charts-css.github.io/docs/development/roadmap/)._
+_This is still alpha, please do not use in production. Any issues are still however welcome as this is built out. For more information, [please read the roadmap](https://vue-charts-css.github.io/docs/development/roadmap/)._
 
 ## Installation
 
