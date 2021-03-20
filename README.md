@@ -4,6 +4,22 @@
 
 Visualization helps end-users understand data. **Vue Charts.css** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
 
+## Installation
+
+Find full [Installation guide for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/get-started/installation).
+
+### With Package Managers
+
+Yarn
+```
+yarn add vue.charts.css
+```
+
+NPM
+```
+npm install vue.charts.css
+```
+
 ## Documentation
 
 Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/).
