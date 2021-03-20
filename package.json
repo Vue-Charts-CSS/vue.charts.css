@@ -1,6 +1,6 @@
 {
     "name": "vue.charts.css",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Open Source Vue wrapper for Charts CSS (chartscss.org)",
     "main": "dist/charts.min.js",
     "author": "Matthew Spence",
