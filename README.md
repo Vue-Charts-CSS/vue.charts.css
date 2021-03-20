@@ -1,14 +1,11 @@
-# Vue Charts.css
+# Vue Charts.css - Vue Wrapper for Charts.CSS**
 
-**Vue Charts.css is an open source Vue wrapper for Charts.CSS.**
 
-Visualization helps end-users understand data.
-
-**Vue Charts.css** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org)
+Visualization helps end-users understand data. **Vue Charts.css** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
 
 ## Documentation
 
-Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/)
+Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/).
 
 ```
 <charts-css
@@ -17,7 +14,9 @@ Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.
     :labels="['Mon', 'Tue', 'Wed']"
     :datasets="datasets"
 />
+```
 
+```
 <script>
     export default {
         data()
@@ -46,4 +45,5 @@ Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.
 ## License
 
 **Vue Charts.css** and **Charts.CSS** are licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 **Vue Charts.css** is not affiliated with the creators of **Charts.css**.
