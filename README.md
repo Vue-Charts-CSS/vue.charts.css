@@ -1,4 +1,4 @@
-# Vue Charts.css - Vue Wrapper for Charts.CSS**
+# Vue Charts.css - Vue Wrapper for Charts.CSS
 
 
 Visualization helps end-users understand data. **Vue Charts.css** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
