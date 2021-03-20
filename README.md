@@ -8,8 +8,40 @@ Visualization helps end-users understand data.
 
 ## Documentation
 
-Coming shortly.
+Find full [Documentation for Vue Charts.CSS here](https://vue-charts-css.github.io/docs/)
 
+```
+<charts-css
+    heading="Team's Coffee Count"
+    type="bar"
+    :labels="['Mon', 'Tue', 'Wed']"
+    :datasets="datasets"
+/>
+
+<script>
+    export default {
+        data()
+        {
+            return {
+                datasets: [
+                    {
+                        name: "Ben",
+                        values: [2, 4, 3],
+                    },
+                    {
+                        name: "Josie",
+                        values: [7, 6, 3, 4],
+                    },
+                    {
+                        name: "Tim",
+                        values: [12, 278, 0, 0],
+                    },
+                ],
+            };
+        },
+    }
+</script>
+```
 
 ## License
 
