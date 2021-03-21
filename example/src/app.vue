@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1>Example</h1>
+        <h1>Chart Examples</h1>
+
+        <h2>Column</h2>
         <chartscss
              type="column"
              heading="Team's coffee count"
@@ -16,6 +18,7 @@
              show-tooltips
          />
 
+         <h2>Bar</h2>
          <chartscss
               type="bar"
               heading="Bens coffee count"
@@ -46,11 +49,11 @@
                 datasets: [
                     {
                         name: "James",
-                        values: [1, 20, 32, 1],
+                        values: [3, 20, 32, 4],
                     },
                     {
                         name: "Ben",
-                        values: [6, 3, 4, 1],
+                        values: [6, 3, 4, 6],
                     },
                 ],
             };

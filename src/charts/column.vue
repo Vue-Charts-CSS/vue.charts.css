@@ -3,7 +3,7 @@
         :class="chartClasses"
         :style="{'height': heightStyle,}"
     >
-        <caption v-if="hasHeading">
+        <caption v-if="hasHeading" class="heading">
             <slot name="heading"></slot>
         </caption>
         <tbody>
