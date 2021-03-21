@@ -3,7 +3,7 @@
         :class="chartClasses"
         :style="{'height': heightStyle,}"
     >
-        <caption v-if="hasHeading">
+        <caption v-if="hasHeading" class="heading">
             <slot name="heading"></slot>
         </caption>
         <tbody>
@@ -34,7 +34,7 @@
     import ChartBaseMixin from "./../mixins/chart-base";
 
     export default {
-        name: "chartscss-area",
+        name: "charts-css-area",
 
         mixins: [ChartBaseMixin,],
 
@@ -71,7 +71,8 @@
 
                         carry[valueIndex].push({
                             valueRaw: value,
-                            size: value / max,
+                            start: value / max,
+                            size: dataset.values[valueIndex + 1] ? dataset.values[valueIndex + 1] / max : 0,
                             datasetName: dataset.name,
                             label: this.labels[valueIndex],
                             tooltip: tooltip,

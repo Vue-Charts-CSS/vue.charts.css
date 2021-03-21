@@ -54,7 +54,10 @@ export default {
     methods: {
         resolveDataStyle(value, rowIndex, colIndex)
         {
-            let style = {'--size': value.size, };
+            let style = {
+                '--start': value.start,
+                '--size': value.size,
+            };
 
             if (this.resolveDataColor){
                 let color = this.resolveDataColor(value, value.label, value.datasetName, rowIndex, colIndex, this.datasetsCount > 1);

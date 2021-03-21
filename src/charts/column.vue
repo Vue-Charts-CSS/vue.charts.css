@@ -3,7 +3,7 @@
         :class="chartClasses"
         :style="{'height': heightStyle,}"
     >
-        <caption v-if="hasHeading">
+        <caption v-if="hasHeading" class="heading">
             <slot name="heading"></slot>
         </caption>
         <tbody>
@@ -34,7 +34,7 @@
     import ChartBaseMixin from "./../mixins/chart-base";
 
     export default {
-        name: "chartscss-column",
+        name: "charts-css-column",
 
         mixins: [ChartBaseMixin,],
 

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>Example</h1>
-        <chartscss
+        <h1>Chart Examples</h1>
+
+        <h2>Column</h2>
+        <charts-css
              type="column"
              heading="Team's coffee count"
              :labels="labels"
@@ -16,7 +18,8 @@
              show-tooltips
          />
 
-         <chartscss
+         <h2>Bar</h2>
+         <charts-css
               type="bar"
               heading="Bens coffee count"
               :labels="labels"
@@ -32,6 +35,36 @@
               show-labels
               show-tooltips
           />
+
+          <h2>Area</h2>
+          <charts-css
+               type="area"
+               heading="Bens coffee count"
+               :labels="labels"
+               :datasets="datasets"
+               :height="300"
+               :formatDataValue="(value) => value + ' coffee' + ( value > 1 ? 's':'' )"
+               :resolveDataColor="(value, rowIndex, colIndex) => rowIndex == 1 ? 'green':null"
+               show-heading
+               show-legend
+               show-labels
+               hide-data
+           />
+
+           <h2>Line</h2>
+           <charts-css
+                type="line"
+                heading="Bens coffee count"
+                :labels="labels"
+                :datasets="datasets"
+                :height="300"
+                :formatDataValue="(value) => value + ' coffee' + ( value > 1 ? 's':'' )"
+                :resolveDataColor="(value, rowIndex, colIndex) => rowIndex == 1 ? 'green':null"
+                show-heading
+                show-legend
+                show-labels
+                hide-data
+            />
     </div>
 </template>
 
@@ -46,11 +79,15 @@
                 datasets: [
                     {
                         name: "James",
-                        values: [1, 20, 32, 1],
+                        values: [3, 20, 32, 4],
                     },
                     {
                         name: "Ben",
-                        values: [6, 3, 4, 1],
+                        values: [6, 3, 4, 17],
+                    },
+                    {
+                        name: "Tim",
+                        values: [4, 13, 14, 6],
                     },
                 ],
             };
