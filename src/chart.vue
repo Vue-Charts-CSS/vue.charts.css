@@ -33,7 +33,7 @@
     import ChartLine from "./charts/line.vue";
 
     export default {
-        name: "chartscss",
+        name: "charts-css",
 
         props: {
             type: { type: String, required: true, },
