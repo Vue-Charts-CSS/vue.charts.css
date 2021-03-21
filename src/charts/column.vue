@@ -73,7 +73,7 @@
                             valueRaw: value,
                             size: value / max,
                             datasetName: dataset.name,
-                            label: his.labels[valueIndex],
+                            label: this.labels[valueIndex],
                             tooltip: tooltip,
                         });
                     });

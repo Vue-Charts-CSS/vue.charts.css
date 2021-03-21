@@ -57,7 +57,6 @@ export default {
             let style = {'--size': value.size, };
 
             if (this.resolveDataColor){
-                value, label, datasetName, rowIndex, colIndex, hasMultipleDatasets = false
                 let color = this.resolveDataColor(value, value.label, value.datasetName, rowIndex, colIndex, this.datasetsCount > 1);
 
                 if (color){

@@ -18,12 +18,8 @@
                     :key="rowIndex + '-' + colIndex + '-' + value.valueRaw"
                     :style="resolveDataStyle(value, rowIndex, colIndex)"
                 >
-                    <span class="data">
-                        {{ formatDataValue(value.valueRaw) }}
-                    </span>
-                    <span v-if="value.tooltip" class="tooltip">
-                        {{ value.tooltip }}
-                    </span>
+                    <span class="data">{{ formatDataValue(value.valueRaw) }}</span>
+                    <span v-if="value.tooltip" class="tooltip">{{ value.tooltip }}</span>
                 </td>
             </tr>
         </tbody>
@@ -72,6 +68,8 @@
                         carry[valueIndex].push({
                             valueRaw: value,
                             size: value / max,
+                            datasetName: dataset.name,
+                            label: this.labels[valueIndex],
                             tooltip: tooltip,
                         });
                     });

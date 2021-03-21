@@ -72,6 +72,8 @@
                         carry[valueIndex].push({
                             valueRaw: value,
                             size: value / max,
+                            datasetName: dataset.name,
+                            label: this.labels[valueIndex],
                             tooltip: tooltip,
                         });
                     });
