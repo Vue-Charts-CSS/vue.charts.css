@@ -27,6 +27,11 @@
 </template>
 
 <script>
+    import ChartBar from "./charts/bar.vue";
+    import ChartColumn from "./charts/column.vue";
+    import ChartArea from "./charts/area.vue";
+    import ChartLine from "./charts/line.vue";
+
     export default {
         name: "chartscss",
 
@@ -71,6 +76,13 @@
                 type: Function,
                 default: (value, label, datasetName, rowIndex, colIndex, hasMultipleDatasets = false) => null,
             },
+        },
+
+        components: {
+            "charts-css-bar": ChartBar,
+            "charts-css-column": ChartColumn,
+            "charts-css-area": ChartArea,
+            "charts-css-line": ChartLine,
         },
 
         computed: {
@@ -120,7 +132,7 @@
             },
             component()
             {
-                return "chartscss-" + this.type;
+                return "charts-css-" + this.type;
             },
         },
     }

@@ -34,7 +34,7 @@
     import ChartBaseMixin from "./../mixins/chart-base";
 
     export default {
-        name: "chartscss-column",
+        name: "charts-css-column",
 
         mixins: [ChartBaseMixin,],
 

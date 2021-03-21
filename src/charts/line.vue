@@ -18,8 +18,12 @@
                     :key="rowIndex + '-' + colIndex + '-' + value.valueRaw"
                     :style="resolveDataStyle(value, rowIndex, colIndex)"
                 >
-                    <span class="data">{{ formatDataValue(value.valueRaw) }}</span>
-                    <span v-if="value.tooltip" class="tooltip">{{ value.tooltip }}</span>
+                    <span class="data">
+                        {{ formatDataValue(value.valueRaw) }}
+                    </span>
+                    <span v-if="value.tooltip" class="tooltip">
+                        {{ value.tooltip }}
+                    </span>
                 </td>
             </tr>
         </tbody>
@@ -30,7 +34,7 @@
     import ChartBaseMixin from "./../mixins/chart-base";
 
     export default {
-        name: "charts-css-bar",
+        name: "charts-css-line",
 
         mixins: [ChartBaseMixin,],
 
@@ -67,7 +71,8 @@
 
                         carry[valueIndex].push({
                             valueRaw: value,
-                            size: value / max,
+                            start: value / max,
+                            size: dataset.values[valueIndex + 1] ? dataset.values[valueIndex + 1] / max : 0,
                             datasetName: dataset.name,
                             label: this.labels[valueIndex],
                             tooltip: tooltip,

@@ -3,7 +3,7 @@
         <h1>Chart Examples</h1>
 
         <h2>Column</h2>
-        <chartscss
+        <charts-css
              type="column"
              heading="Team's coffee count"
              :labels="labels"
@@ -19,7 +19,7 @@
          />
 
          <h2>Bar</h2>
-         <chartscss
+         <charts-css
               type="bar"
               heading="Bens coffee count"
               :labels="labels"
@@ -35,6 +35,36 @@
               show-labels
               show-tooltips
           />
+
+          <h2>Area</h2>
+          <charts-css
+               type="area"
+               heading="Bens coffee count"
+               :labels="labels"
+               :datasets="datasets"
+               :height="300"
+               :formatDataValue="(value) => value + ' coffee' + ( value > 1 ? 's':'' )"
+               :resolveDataColor="(value, rowIndex, colIndex) => rowIndex == 1 ? 'green':null"
+               show-heading
+               show-legend
+               show-labels
+               hide-data
+           />
+
+           <h2>Line</h2>
+           <charts-css
+                type="line"
+                heading="Bens coffee count"
+                :labels="labels"
+                :datasets="datasets"
+                :height="300"
+                :formatDataValue="(value) => value + ' coffee' + ( value > 1 ? 's':'' )"
+                :resolveDataColor="(value, rowIndex, colIndex) => rowIndex == 1 ? 'green':null"
+                show-heading
+                show-legend
+                show-labels
+                hide-data
+            />
     </div>
 </template>
 
@@ -53,7 +83,11 @@
                     },
                     {
                         name: "Ben",
-                        values: [6, 3, 4, 6],
+                        values: [6, 3, 4, 17],
+                    },
+                    {
+                        name: "Tim",
+                        values: [4, 13, 14, 6],
                     },
                 ],
             };
