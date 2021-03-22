@@ -18,7 +18,7 @@
 
         <slot name="legend" v-if="( $slots.legend || showLegend ) && this.datasets.length > 1">
             <ul :class="legendClasses">
-                <li v-for="(dataset, index) in datasets" :key="dataset.name">
+                <li v-for="(dataset, index) in datasets" :key="index + '' + datasets.length">
                     {{ dataset.name }}
                 </li>
             </ul>
@@ -33,7 +33,7 @@
     import ChartLine from "./charts/line.vue";
 
     export default {
-        name: "chartscss",
+        name: "charts-css",
 
         props: {
             type: { type: String, required: true, },

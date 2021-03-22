@@ -9,13 +9,13 @@
         <tbody>
             <tr
                 v-for="(row, rowIndex) in rows"
-                :key="row.name"
+                :key="rowIndex + '-' + row.length"
             >
                 <th scope="row">{{ labels[rowIndex] }}</th>
 
                 <td
                     v-for="(value, colIndex) in row"
-                    :key="rowIndex + '-' + colIndex + '-' + value.valueRaw"
+                    :key="colIndex + '-' + row.length"
                     :style="resolveDataStyle(value, rowIndex, colIndex)"
                 >
                     <span class="data">
