@@ -184,11 +184,11 @@
                             tooltip: tooltip,
                         };
 
-                        if (chartType === "column" || chartType == "bar"){
+                        if (chartType === "column" || chartType === "bar"){
                             mappedValue.size = value / max;
                         }
 
-                        if (chartType == "area" || chartType == "line"){
+                        if (chartType === "area" || chartType === "line"){
                             mappedValue.start = value / max;
                             mappedValue.size = dataset.values[valueIndex + 1] ? dataset.values[valueIndex + 1] / max : 0;
                         }
