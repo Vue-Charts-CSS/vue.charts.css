@@ -5,13 +5,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
 
     entry: {
-        "/dist/vue-charts-css.min": __dirname + "/src/index.js",
         "/example/dist/example": [__dirname + "/example/src/example.js", __dirname + "/example/src/example.scss",],
+        "/dist/vue-charts-css.min": __dirname + "/src/index.js", // If you provide an array as the entry point, only the last one in the array will be exposed.
     },
 
     output: {
         path: path.resolve(__dirname, "./"),
         filename: "[name].js",
+        library: "VueChartsCSS", // expose `vue-charts-css.min.js` as `window.VueChartsCSS
+        libraryTarget: "umd",
     },
 
     resolve: {
