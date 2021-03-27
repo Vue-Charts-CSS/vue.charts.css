@@ -4,33 +4,36 @@
             :class="chartClasses"
         >
             <caption v-if="heading !== null || $slots.heading" class="heading">
-                <slot name="heading" v-bind:heading="heading">{{ heading }}</slot>
+                <slot name="heading" :heading="heading">{{ heading }}</slot>
             </caption>
 
-            <component
-                :is="component"
-                :labels="labels"
-                :datasets="datasets"
-                :chartClasses="chartClasses"
-                :formatDataValue="formatDataValue"
-                :resolveDataColor="resolveDataColor"
-                :resolveDataTooltip="resolveDataTooltip"
-                :showTooltips="showTooltips"
-            >
-                <template v-slot:label="slotProps">
-                    <slot name="label" v-bind:label="slotProps.label" v-bind:labelIndex="slotProps.labelIndex">{{ slotProps.label }}</slot>
-                </template>
-                
-                <template v-slot:data="slotProps">
-                    <slot name="data" v-bind:value="slotProps.value" v-bind:formattedValue="slotProps.formattedValue">{{ slotProps.formattedValue }}</slot>
-                </template>
-            </component>
+            <tbody>
+                <tr
+                    v-for="(row, rowIndex) in rows"
+                    :key="rowIndex"
+                >
+                    <th scope="row"><slot name="label" :label="labels[rowIndex]" :labelIndex="rowIndex">{{ labels[rowIndex] }}</slot></th>
+
+                    <td
+                        v-for="(value, colIndex) in row"
+                        :key="colIndex"
+                        :style="resolveDataStyle(value, rowIndex, colIndex)"
+                    >
+                        <span class="data">
+                            <slot name="data" :value="value" :formattedValue="formatDataValue(value.valueRaw)">
+                                {{ formatDataValue(value.valueRaw) }}
+                            </slot>
+                        </span>
+                        <span v-if="value.tooltip" class="tooltip">{{ value.tooltip }}</span>
+                    </td>
+                </tr>
+            </tbody>
         </table>
 
         <slot
             name="legend"
             v-if="( $slots.legend || showLegend ) && this.datasets.length > 0"
-            v-bind:datasets="datasets"
+            :datasets="datasets"
         >
             <ul :class="legendClasses">
                 <li v-for="(dataset, index) in datasets" :key="index + '' + datasets.length">
@@ -42,11 +45,6 @@
 </template>
 
 <script>
-    import ChartBar from "./charts/bar.vue";
-    import ChartColumn from "./charts/column.vue";
-    import ChartArea from "./charts/area.vue";
-    import ChartLine from "./charts/line.vue";
-
     export default {
         name: "charts-css",
 
@@ -90,13 +88,6 @@
                 type: Function,
                 default: (value, label, datasetName, rowIndex, colIndex, hasMultipleDatasets = false) => null,
             },
-        },
-
-        components: {
-            "charts-css-bar": ChartBar,
-            "charts-css-column": ChartColumn,
-            "charts-css-area": ChartArea,
-            "charts-css-line": ChartLine,
         },
 
         computed: {
@@ -144,10 +135,90 @@
 
                 return chartClasses.trim();
             },
-            component()
+            datasetsCount()
             {
-                return "charts-css-" + this.type;
+                return this.datasets.length;
             },
+            hasHeading()
+            {
+                return !!this.$slots.heading;
+            },
+            /**
+             * Converts from datasets schema to Charts.CSS rendering.
+             * @return {array}
+             */
+            rows()
+            {
+                /**
+                 * get highest value in values, so we can calculate scale between 0.0 and 1.0
+                 * @type {Number}
+                 */
+                const max = Math.max(...this.datasets.reduce((carry, dataset) => {
+                    carry = carry.concat(dataset.values);
+                    return carry;
+                }, []));
+
+                const chartType = this.type;
+
+                return this.datasets.reduce((carry, dataset, index) => {
+
+                    /**
+                     * Map dataset to each column
+                     */
+                    dataset.values.forEach((value, valueIndex) => {
+                        if (typeof carry[valueIndex] === "undefined"){
+                            carry[valueIndex] = [];
+                        }
+
+                        let tooltip = this.resolveDataTooltip && this.showTooltips ?
+                            this.resolveDataTooltip(value, this.labels[valueIndex], dataset.name, valueIndex, valueIndex, this.datasets.length > 1) :
+                            null
+                        ;
+
+                        let mappedValue = {
+                            valueRaw: value,
+                            valueIndex: valueIndex,
+                            datasetName: dataset.name,
+                            datasetIndex: index,
+                            label: this.labels[valueIndex],
+                            tooltip: tooltip,
+                        };
+
+                        if (chartType === "column" || chartType == "bar"){
+                            mappedValue.size = value / max;
+                        }
+
+                        if (chartType == "area" || chartType == "line"){
+                            mappedValue.start = value / max;
+                            mappedValue.size = dataset.values[valueIndex + 1] ? dataset.values[valueIndex + 1] / max : 0;
+                        }
+
+                        carry[valueIndex].push(mappedValue);
+                    });
+
+                    return carry;
+                }, []);
+            },
+        },
+
+        methods: {
+            resolveDataStyle(value, rowIndex, colIndex)
+            {
+                let style = {
+                    '--start': value.start,
+                    '--size': value.size,
+                };
+
+                if (this.resolveDataColor){
+                    let color = this.resolveDataColor(value, value.label, value.datasetName, rowIndex, colIndex, this.datasetsCount > 1);
+
+                    if (color){
+                        style["--color"] = color;
+                    }
+                }
+
+                return style;
+            }
         },
     }
 </script>
