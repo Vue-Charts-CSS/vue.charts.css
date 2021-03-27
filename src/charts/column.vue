@@ -1,33 +1,25 @@
 <template>
-    <table
-        :class="chartClasses"
-        :style="{'height': heightStyle,}"
-    >
-        <caption v-if="hasHeading" class="heading">
-            <slot name="heading"></slot>
-        </caption>
-        <tbody>
-            <tr
-                v-for="(row, rowIndex) in rows"
-                :key="rowIndex + '-' + row.length"
-            >
-                <th scope="row">{{ labels[rowIndex] }}</th>
+    <tbody>
+        <tr
+            v-for="(row, rowIndex) in rows"
+            :key="rowIndex"
+        >
+            <th scope="row"><slot name="label" v-bind:label="labels[rowIndex]" v-bind:labelIndex="rowIndex"></slot></th>
 
-                <td
-                    v-for="(value, colIndex) in row"
-                    :key="colIndex + '-' + row.length"
-                    :style="resolveDataStyle(value, rowIndex, colIndex)"
-                >
-                    <span class="data">
+            <td
+                v-for="(value, colIndex) in row"
+                :key="colIndex"
+                :style="resolveDataStyle(value, rowIndex, colIndex)"
+            >
+                <span class="data">
+                    <slot name="data" :value="value" :formattedValue="formatDataValue(value.valueRaw)">
                         {{ formatDataValue(value.valueRaw) }}
-                    </span>
-                    <span v-if="value.tooltip" class="tooltip">
-                        {{ value.tooltip }}
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </slot>
+                </span>
+                <span v-if="value.tooltip" class="tooltip">{{ value.tooltip }}</span>
+            </td>
+        </tr>
+    </tbody>
 </template>
 
 <script>
@@ -71,8 +63,10 @@
 
                         carry[valueIndex].push({
                             valueRaw: value,
+                            valueIndex: valueIndex,
                             size: value / max,
                             datasetName: dataset.name,
+                            datasetIndex: index,
                             label: this.labels[valueIndex],
                             tooltip: tooltip,
                         });

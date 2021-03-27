@@ -1,9 +1,5 @@
 export default {
     props: {
-        height: {
-            type: [String, Number],
-            required: true,
-        },
         labels: {
             type: Array,
             required: true,
@@ -34,13 +30,6 @@ export default {
     },
 
     computed: {
-        heightStyle()
-        {
-            if (typeof this.height === "string"){
-                return this.height;
-            }
-            return this.height + "px";
-        },
         datasetsCount()
         {
             return this.datasets.length;

@@ -1,22 +1,37 @@
 <template>
     <div class="vue-charts-css" :style="style">
-        <component
-            :is="component"
-            :height="height"
-            :labels="labels"
-            :datasets="datasets"
-            :chartClasses="chartClasses"
-            :formatDataValue="formatDataValue"
-            :resolveDataColor="resolveDataColor"
-            :resolveDataTooltip="resolveDataTooltip"
-            :showTooltips="showTooltips"
+        <table
+            :class="chartClasses"
         >
-            <template v-slot:heading>
-                <slot name="heading">{{ heading }}</slot>
-            </template>
-        </component>
+            <caption v-if="heading !== null || $slots.heading" class="heading">
+                <slot name="heading" v-bind:heading="heading">{{ heading }}</slot>
+            </caption>
 
-        <slot name="legend" v-if="( $slots.legend || showLegend ) && this.datasets.length > 1">
+            <component
+                :is="component"
+                :labels="labels"
+                :datasets="datasets"
+                :chartClasses="chartClasses"
+                :formatDataValue="formatDataValue"
+                :resolveDataColor="resolveDataColor"
+                :resolveDataTooltip="resolveDataTooltip"
+                :showTooltips="showTooltips"
+            >
+                <template v-slot:label="slotProps">
+                    <slot name="label" v-bind:label="slotProps.label" v-bind:labelIndex="slotProps.labelIndex">{{ slotProps.label }}</slot>
+                </template>
+                
+                <template v-slot:data="slotProps">
+                    <slot name="data" v-bind:value="slotProps.value" v-bind:formattedValue="slotProps.formattedValue">{{ slotProps.formattedValue }}</slot>
+                </template>
+            </component>
+        </table>
+
+        <slot
+            name="legend"
+            v-if="( $slots.legend || showLegend ) && this.datasets.length > 0"
+            v-bind:datasets="datasets"
+        >
             <ul :class="legendClasses">
                 <li v-for="(dataset, index) in datasets" :key="index + '' + datasets.length">
                     {{ dataset.name }}
@@ -37,8 +52,7 @@
 
         props: {
             type: { type: String, required: true, },
-            height: { type: [String, Number], },
-            heading: { type: String, required: true, },
+            heading: { type: String },
             headingSize: { type: String, default: "1rem", },
             showHeading: { type: Boolean, default: false, },
 

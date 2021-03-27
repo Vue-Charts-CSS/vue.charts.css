@@ -14,6 +14,7 @@ body {
 
 h1, h2, h3, h4, h5, p {
     padding-bottom: 1rem;
+    text-transform: capitalize;
 }
 
 .container {
@@ -22,8 +23,57 @@ h1, h2, h3, h4, h5, p {
     padding: 1.5rem;
 }
 
+button {
+    border: 0;
+    background-color: var(--secondary);
+    padding: 0.25rem 0.65rem;
+    color: var(--white);
+    cursor: pointer;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+
+    &:hover, &:focus {
+        opacity: 0.9;
+        background-color: var(--primary);
+    }
+
+    &[disabled] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
 .vue-charts-css {
     margin-bottom: 4rem;
+
+    td {
+        transition: width 0.2s ease, height 0.2s ease, transform 0.2s ease;
+        will-change: width, height;
+    }
+
+    .heading input, th[scope=row] input {
+        display: inline-block;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    th[scope=row] input {
+        text-align: center;
+    }
+
+    input.data-number {
+        display: inline-block;
+        max-width: 4em;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    table.charts-css {
+        min-height: 16rem;
+
+        tbody {
+            flex-grow: 1;
+        }
+    }
 
     .charts-css {
         padding: 1rem;
