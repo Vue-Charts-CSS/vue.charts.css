@@ -1,6 +1,6 @@
 {
   "name": "vue.charts.css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue JS wrapper for Charts CSS",
   "main": "dist/vue-charts-css.min.js",
   "author": "Matthew Spence",
