@@ -2,7 +2,7 @@
 
 <img src="https://vue-charts-css.github.io/docs/assets/img/logo-animation.svg" width="125"/>
 
-Visualization helps end-users understand data. **Vue Charts.CSS** helps frontend developers turn data into beautiful charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
+Visualization helps end-users understand data. **Vue Charts.CSS** helps frontend developers turn data into beautiful *interactive* charts and graphs using the powerful [Charts.CSS framework](https://chartscss.org).
 
 ![Version](https://badgen.net/npm/v/vue.charts.css) ![Size](https://badgen.net/badgesize/normal/Vue-Charts-CSS/vue.charts.css/main/dist/vue-charts-css.min.js) ![Size GZIP](https://badgen.net/badgesize/gzip/Vue-Charts-CSS/vue.charts.css/main/dist/vue-charts-css.min.js) ![Size Brotli](https://badgen.net/badgesize/brotli/Vue-Charts-CSS/vue.charts.css/main/dist/vue-charts-css.min.js)
 
@@ -12,18 +12,16 @@ Visualization helps end-users understand data. **Vue Charts.CSS** helps frontend
 
 [View Install Guide](https://vue-charts-css.github.io/docs/get-started/installation).
 
-_This is still alpha, please do not use in production. Any issues are still however welcome as this is built out. For more information, [please read the roadmap](https://vue-charts-css.github.io/docs/development/roadmap/)._
-
 ### With Package Managers
-
-Yarn
-```
-yarn add vue.charts.css
-```
 
 NPM
 ```
 npm install vue.charts.css
+```
+
+Yarn
+```
+yarn add vue.charts.css
 ```
 
 ## Documentation
