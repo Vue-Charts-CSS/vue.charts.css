@@ -1,7 +1,7 @@
 {
   "name": "vue.charts.css",
-  "version": "0.0.21",
-  "description": "Open Source Vue wrapper for Charts CSS (chartscss.org)",
+  "version": "1.0.0",
+  "description": "Vue JS wrapper for Charts CSS",
   "main": "dist/vue-charts-css.min.js",
   "author": "Matthew Spence",
   "license": "MIT",
@@ -19,7 +19,9 @@
     "vue",
     "vue js",
     "sass",
-    "vue chart css",
+    "vue charts",
+    "vue charts css",
+    "vue.charts.css",
     "ui-component"
   ],
   "scripts": {

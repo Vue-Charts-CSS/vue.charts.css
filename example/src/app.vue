@@ -2,10 +2,7 @@
     <div>
         <h1><a target="_blank" href="https://vue-charts-css.github.io/docs/">Vue Charts.CSS</a> Examples</h1>
 
-        <i>TODO:<br>better styling. Waiting for Charts.CSS <a target="_blank" href="https://github.com/ChartsCSS/charts.css/issues/15">namespacing update</a>, so there aren't conflicts between Charts.CSS and styling frameworks (like tailwindcss)</i>
-        <br><br><br>
-
-        <div>
+        <div class="options">
             <div>
                 <input :id="_uid + 'showHeading'" type="checkbox" v-model="showHeading" />
                 <label :for="_uid + 'showHeading'">show-heading</label>
@@ -27,24 +24,24 @@
                 <label :for="_uid + 'reverse'">reverse</label>
             </div>
             <div>
-                <label :for="_uid + 'dataSpacing'">data-spacing</label>
                 <input :id="_uid + 'dataSpacing'" type="number" min="0" max="20" v-model="dataSpacing" />
+                <label :for="_uid + 'dataSpacing'">data-spacing</label>
             </div>
             <div>
-                <label :for="_uid + 'heading'">heading</label>
                 <input :id="_uid + 'heading'" type="text" v-model="heading" />
+                <label :for="_uid + 'heading'">heading</label>
             </div>
         </div>
 
-        <div>
+        <div class="buttons-wrapper">
             <button @click="addDataset">Add Dataset</button>
             <button @click="removeDataset">Remove Dataset</button>
             <button @click="randomizeDatasets">Randomize Datasets</button>
         </div>
 
-        <h2 style="margin: 2rem 0 0.25rem 0;">{{ type }} Chart</h2>
+        <h2>{{ type }} Chart</h2>
 
-        <div>
+        <div class="buttons-wrapper">
             <button
                 v-for="(availableType, index) in types"
                 :key="availableType"
@@ -79,6 +76,7 @@
                     type="text"
                     :value="slotProps.label"
                     v-on:input="updateLabel(slotProps.labelIndex, $event.target.value)"
+                    :style="{width: `${slotProps.label.length + 6}ch`}"
                 >
             </template>
 
@@ -92,6 +90,14 @@
                 >
             </template>
          </charts-css>
+
+        <div style="width: 100%; display: flex;">
+            <textarea
+                :value="stringifiedDatasetsAndLabels"
+                :rows="stringifiedDatasetsAndLabels.split('\n').length"
+                readonly
+            />
+        </div>
     </div>
 </template>
 
@@ -119,12 +125,21 @@
             };
         },
 
+        computed: {
+            stringifiedDatasetsAndLabels()
+            {
+                const value = {
+                    datasets: this.datasets,
+                    labels: this.labels,
+                };
+                return JSON.stringify(value, null, 4);
+            },
+        },
+
         methods: {
             updateLabel(labelIndex, newValue)
             {
-                let labels = this.labels;
-                labels[labelIndex] = newValue;
-                this.labels = labels;
+                this.$set(this.labels, labelIndex, newValue);
             },
             updateDatasetValue(datasetIndex, valueIndex, newValue)
             {
