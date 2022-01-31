@@ -1,13 +1,9 @@
-import Vue from "vue/dist/vue.esm.js";
+import { createApp } from "vue";
+
 import VueChartCss from "./../../src/index";
 import App from "./app";
 
-Vue.use(VueChartCss);
-
-const app = new Vue({
-    el: "#app",
-    components: {
-        App,
-    },
-    template: "<App/>",
-});
+const app = createApp(App)
+    .use(VueChartCss)
+    .mount("#app")
+;

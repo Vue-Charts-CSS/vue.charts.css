@@ -8,6 +8,26 @@ Visualization helps end-users understand data. **Vue Charts.CSS** helps frontend
 
 [Get Started | Learn more | Docs](https://vue-charts-css.github.io/docs/get-started/)
 
+## Dependencies
+
++ [Charts.CSS](https://github.com/ChartsCSS/charts.css)
++ Vue 3
+
+<details><summary>Need Vue 2 support?</summary>
+
+Vue Charts CSS is built for Vue 3, however you can still use the Vue 2 supported version of Vue Charts CSS by locking to the `1.x.x` versions of the package.
+
+Make sure your `package.json` file has the following:
+
+```json
+"dependencies": {
+  "vue.charts.css": "^1.0.1"
+}
+```
+
+Vue 2 is supported under the `vue2` branch and `1.x.x` versions of the package. However, it is highly recommended upgrading to Vue 3 for long-term support.
+</details>
+
 ## Install
 
 [View Install Guide](https://vue-charts-css.github.io/docs/get-started/installation).

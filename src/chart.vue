@@ -101,12 +101,14 @@
 
                 return style;
             },
+
             legendClasses(){
                 if (this.showLegend){
                     return "charts-css legend " + ( this.legendInline ? 'legend-inline':'' ) + " legend-" + this.legendType;
                 }
                 return "";
             },
+
             chartClasses()
             {
                 let propClasses = {
@@ -135,14 +137,17 @@
 
                 return chartClasses.trim();
             },
+
             datasetsCount()
             {
                 return this.datasets.length;
             },
+
             hasHeading()
             {
                 return !!this.$slots.heading;
             },
+
             /**
              * Converts from datasets schema to Charts.CSS rendering.
              * @return {array}
@@ -202,6 +207,13 @@
         },
 
         methods: {
+            /**
+             * Returns the mapped rendering CSS style for the given value, row and column.
+             * @param value
+             * @param rowIndex
+             * @param colIndex
+             * @return {{"--size", "--start"}}
+             */
             resolveDataStyle(value, rowIndex, colIndex)
             {
                 let style = {
@@ -210,7 +222,7 @@
                 };
 
                 if (this.resolveDataColor){
-                    let color = this.resolveDataColor(value, value.label, value.datasetName, rowIndex, colIndex, this.datasetsCount > 1);
+                    const color = this.resolveDataColor(value, value.label, value.datasetName, rowIndex, colIndex, this.datasetsCount > 1);
 
                     if (color){
                         style["--color"] = color;
