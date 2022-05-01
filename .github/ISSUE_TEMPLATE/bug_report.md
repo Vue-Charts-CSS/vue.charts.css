@@ -7,6 +7,9 @@ assignees: ''
 
 ---
 
+**Version of Vue Charts CSS**
+ - 2.x.x or 3.x.x? (Change to precise version no.)
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
