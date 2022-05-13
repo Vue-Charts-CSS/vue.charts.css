@@ -18,10 +18,10 @@ until the up-stream framework releases an update.
 
 ## Is this dead?
 
-**[No](https://github.com/Ch//artsCSS/charts.css/discussions/68)! 🔥**
+**[No](https://github.com/ChartsCSS/charts.css/discussions/68)! 🔥**
 
 However, maintaining open source projects for free is a big and admirable burden for developers.
-The Charts CSS [creator](https://github.com/ramiy) has claimed the framework [is not dead](https://github.com/Ch//artsCSS/charts.css/discussions/68)
+The Charts CSS [creator](https://github.com/ramiy) has claimed the framework [is not dead](https://github.com/ChartsCSS/charts.css/discussions/68)
 and will be implementing a release when time allows, with new features following [this roadmap](https://chartscss.org/development/roadmap/#roadmap).
 
 Vue Charts CSS will promptly kickstart this roadmap once the up-stream framework sees public activity.
